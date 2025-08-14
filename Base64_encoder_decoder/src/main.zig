@@ -113,7 +113,7 @@ const Base64 = struct {
                 count = 0;
             }
         }
-        return output[0..iout - 1];
+        return output;
     }
 };
 
@@ -132,11 +132,11 @@ fn calcDecodeLenght(input: []const u8) !usize {
         return 3;
     }
 
-    const n_groups: usize = try std.math.divFloor(usize, input.len, 3);
+    const n_groups: usize = try std.math.divFloor(usize, input.len, 4);
 
-    var result: usize = n_groups * 4;
+    var result: usize = n_groups * 3;
 
-    var i: usize = 0;
+    var i: usize = input.len - 1;
 
     while (i > 0) : (i -= 1) {
         if (input[i] == '=') {
