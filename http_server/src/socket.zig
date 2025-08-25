@@ -16,5 +16,3 @@ pub const Socket = struct {
         return Socket{ ._address = addr, ._stream = stream };
     }
 };
-
-
